@@ -1,10 +1,17 @@
 [package]
-name = "rust-rake-algoritm"
+name = "rake"
 version = "0.1.0"
-edition = "2021"
+authors = ["akmal"]
+edition = "2024"
+license = "MIT/Apache-2.0"
+description = "Implementation of RAKE Algoritm"
+homepage = "https://github.com/pandas-id/rust-rake-algoritm.git"
+repository = "https://github.com/pandas-id/rust-rake-algoritm.git"
+keywords = ["rake", "algoritm"]
+readme = "README.md"
 
 [dependencies]
 stop-words = "0.8.0"
 
-[lib]
-path = "src/lib.rs"
+# [lib]
+# path = "src/lib.rs"
