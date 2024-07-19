@@ -1,5 +1,5 @@
-use std::collections::HashMap;
 use crate::stopwords::get_stopwords;
+use std::collections::HashMap;
 
 pub struct Rake {
     text: String,
@@ -12,7 +12,6 @@ pub struct Rake {
 }
 
 impl Rake {
-
     pub fn new(text: String) -> Self {
         Self {
             text,
@@ -25,19 +24,18 @@ impl Rake {
         }
     }
 
-    pub fn stopwords(&mut self, lang: &str) {
-        self.stopwords = get_stopwords(lang).unwrap();
-    }
 
-    pub fn process(mut self) -> Self {
+    pub fn run(&mut self) {
         self.extract_sentences();
         self.extract_candidate_keyphrases();
         self.calculate_word_scores();
         self.calculate_keyphrase_scores();
 
         self.load_keyphrases();
+    }
 
-        self
+    pub fn stopwords(&mut self, lang: &str) {
+        self.stopwords = get_stopwords(lang).unwrap();
     }
 
     fn extract_sentences(&mut self) {
@@ -47,11 +45,9 @@ impl Rake {
             .split(&['.', ','])
             .map(str::to_string)
             .collect();
-
     }
 
     fn extract_candidate_keyphrases(&mut self) {
-
         for sentence in &self.sentences {
             let words: Vec<&str> = sentence.split_whitespace().collect();
 
@@ -73,7 +69,6 @@ impl Rake {
                 keyphrase.clear()
             }
         }
-
     }
 
     fn calculate_word_scores(&mut self) {
@@ -96,11 +91,9 @@ impl Rake {
                 (*word_degree.get(word).unwrap() as f64) / (*word_freq.get(word).unwrap() as f64),
             );
         }
-
     }
 
     fn calculate_keyphrase_scores(&mut self) {
-
         for phrase in &self.candidate_keyphrases {
             let words: Vec<_> = phrase.split_whitespace().collect();
 
@@ -114,7 +107,6 @@ impl Rake {
 
             self.keyphrase_scores.insert(phrase.clone(), score);
         }
-
     }
 
     pub fn keyphrase_scores_descending(&self) -> Vec<(String, f64)> {
