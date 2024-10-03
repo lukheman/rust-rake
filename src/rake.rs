@@ -1,6 +1,7 @@
 use crate::stopwords::get_stopwords;
 use std::collections::HashMap;
 
+/// Rake (Rapid Automatic Keyword Extracted) by Rust
 pub struct Rake {
     text: String,
     stopwords: Vec<String>,
@@ -12,6 +13,19 @@ pub struct Rake {
 }
 
 impl Rake {
+    /// Create a new 'Rake' object with a given text.
+    ///
+    /// Automatic load stopwords for the English Language.
+    ///
+    /// ## Arguments
+    ///
+    /// - `text`: The text to extract key phrases from
+    ///
+    /// ## Example
+    ///
+    /// ```rust
+    /// let rake = Rake::new(String::from("Natural Language Processing is amazing!"));
+    /// ```
     pub fn new(text: String) -> Self {
         Self {
             text,
