@@ -27,13 +27,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "rake"
-version = "0.1.0"
-dependencies = [
- "stop-words",
-]
-
-[[package]]
 name = "ryu"
 version = "1.0.18"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -68,6 +61,13 @@ dependencies = [
  "itoa",
  "ryu",
  "serde",
+]
+
+[[package]]
+name = "srake"
+version = "0.1.0"
+dependencies = [
+ "stop-words",
 ]
 
 [[package]]
