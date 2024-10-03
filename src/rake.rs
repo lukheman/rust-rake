@@ -152,12 +152,34 @@ impl Rake {
         }
     }
 
+    /// Get keyphrase scores in descending order.
+    ///
+    /// ## Returns
+    ///
+    /// A sorted vector of keyphrase-score pairs.
+    ///
+    /// ## Example
+    ///
+    /// ```rust
+    /// let keyphrases = rake.keyphrase_scores_descending();
+    /// ```
     pub fn keyphrase_scores_descending(&self) -> Vec<(String, f64)> {
         let mut sorted: Vec<_> = self.keyphrase_scores.clone().into_iter().collect();
         sorted.sort_by(|a, b| b.1.partial_cmp(&a.1).unwrap());
         return sorted;
     }
 
+    /// Get keyphrase scores in ascending order.
+    ///
+    /// ## Returns
+    ///
+    /// A sorted vector of keyphrase-score pairs.
+    ///
+    /// ## Example
+    ///
+    /// ```rust
+    /// let keyphrases = rake.keyphrase_scores_ascending();
+    /// ```
     pub fn keyphrase_scores_ascending(&self) -> Vec<(String, f64)> {
         let mut sorted: Vec<_> = self.keyphrase_scores.clone().into_iter().collect();
         sorted.sort_by(|a, b| a.1.partial_cmp(&b.1).unwrap());
