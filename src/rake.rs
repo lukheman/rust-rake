@@ -38,8 +38,15 @@ impl Rake {
         }
     }
 
-
-    pub fn run(&mut self) {
+    /// Process the text and extract key phrases
+    ///
+    /// ## Example
+    ///
+    /// ```rust
+    /// let rake = Rake::new(String::from("AI is a branch of Computer Science."));
+    /// rake.process();
+    /// ```
+    pub fn process(&mut self) {
         self.extract_sentences();
         self.extract_candidate_keyphrases();
         self.calculate_word_scores();
