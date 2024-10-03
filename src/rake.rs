@@ -60,6 +60,27 @@ impl Rake {
         self.stopwords = get_stopwords(lang).unwrap();
     }
 
+    /// Set stopwords from a file
+    ///
+    /// ## Example
+    ///
+    /// ```rust
+    /// let mut rake = Rake::new(String::from("Text with custom stopwords."));
+    /// rake.set_stopwords_from_file("./stopwords.txt");
+    /// ```
+    pub fn set_stopwords_from_file(&mut self, filepath: &str) {
+        let raw_stopwords = fs::read_to_string(filepath).unwrap();
+        self.stopwords = raw_stopwords
+            .split('\n')
+            .filter(|x| !x.is_empty())
+            .map(|x| x.to_string())
+            .collect();
+    }
+
+    // pub fn get_stopwords_list(&mut self) -> &Vec<String> {
+    //     return &self.stopwords;
+    // }
+
     fn extract_sentences(&mut self) {
         self.sentences = self
             .text
