@@ -1,5 +1,6 @@
 use crate::stopwords::get_stopwords;
 use std::collections::HashMap;
+use std::fs;
 
 /// Rake (Rapid Automatic Keyword Extracted) by Rust
 pub struct Rake {
