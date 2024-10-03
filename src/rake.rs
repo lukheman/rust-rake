@@ -48,7 +48,15 @@ impl Rake {
         self.load_keyphrases();
     }
 
-    pub fn stopwords(&mut self, lang: &str) {
+    /// Set stopwords from the specific language
+    ///
+    /// ## Example
+    ///
+    /// ```rust
+    /// let rake = Rake::new(String::from("RAKE adalah algoritma untuk mengekstraksi kata kunci dari teks"));
+    /// rake.set_stopwords("id"); // set stopwords to Indonesian
+    /// ```
+    pub fn set_stopwords(&mut self, lang: &str) {
         self.stopwords = get_stopwords(lang).unwrap();
     }
 
